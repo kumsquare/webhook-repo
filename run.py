@@ -5,6 +5,7 @@ app = create_app()
 if __name__ == '__main__': 
     try:
         app.run(debug=True)
-    except KeboardInterrupt:
+    #Gracefully handle manual shutdown (Ctrl+C) to suppress server thread traceback
+    except KeyboardInterrupt:
         print("\nServer stopped manually")
     

@@ -3,6 +3,8 @@ from app.extensions import mongo
 
 webhook = Blueprint('Webhook', __name__, url_prefix='/webhook')
 
+#GitHub Webhook post routes
+
 @webhook.route('/receiver', methods=["POST"])
 def receiver():
     event = request.headers.get("X-GitHub-Event","").lower()
@@ -53,6 +55,8 @@ def parse_event(event, payload):
             })
             return base_doc
     return None
+
+#Read-only API to fetch recent webhook events for the UI
 
 @webhook.route('/events', methods=["GET"])
 def get_events():

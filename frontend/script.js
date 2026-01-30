@@ -24,6 +24,7 @@ async function fetchEvents() {
     const res = await fetch(EVENTS_API);
     const data = await res.json();
 
+    //sorting events by timestampto ensure the latest change is at the top
     data.sort((a,b) => new Date(b.timestamp) - new Date(a.timestamp));
 
     list.innerHTML = "";
