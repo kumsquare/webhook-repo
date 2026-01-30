@@ -60,7 +60,7 @@ def parse_event(event, payload):
 
 @webhook.route('/events', methods=["GET"])
 def get_events():
-    docs= mongo.db.events.find().sort("timestamp", -1).limit(10)
+    docs= mongo.db.events.find().sort("timestamp", -1).limit(20)
     result = []
 
     for d in docs:
